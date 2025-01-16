@@ -73,9 +73,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Upload Artifact to JFrog Artifactory
-        run: |
+        run: |http://3.109.55.231:8082/artifactory/hello-world-war-libs-snapshot/
           echo "Uploading artifact to JFrog Artifactory..."
-          curl -u "admin:cmVmdGtuOjAxOjE3Njg1ODI0OTI6Tk83bWVsOGdXNTN3TGFBeERxZ2U4UlNZbkRJ" -T /home/ubuntu/.m2/repository/com/example/my-helloworld/1.0-snapshot/my-helloworld-1.0-snapshot.war "http://44.222.253.17:8082/artifactory/assignment-vik-libs-snapshot/my-helloworld-1.0-snapshot2.war"
+          curl -u "admin:cmVmdGtuOjAxOjE3Njg1ODI0OTI6Tk83bWVsOGdXNTN3TGFBeERxZ2U4UlNZbkRJ" -T /home/ubuntu/.m2/repository/com/example/my-helloworld/1.0-snapshot/my-helloworld-1.0-snapshot.war "http://3.109.55.231:8082/artifactory/hello-world-war-libs-snapshot/my-helloworld-1.0-snapshot2.war"
   # Matrix Job: Deployment to Staging and Production (Self-Hosted EC2 with Tomcat installed)
   deploy:
     # This job will deploy to both staging and production environments based on the matrix configuration.
