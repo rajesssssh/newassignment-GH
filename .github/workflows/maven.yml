@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - 'feature/*'
   pull_request:
     branches:
       - main
+      - 'feature/*'
   workflow_dispatch:
     inputs:
       deploy:
@@ -15,14 +17,14 @@ on:
         default: 'false'
 
 jobs:
-   # Parallel Job: Build and Test on Self-Hosted EC2 (with Tomcat installed )
+  # Parallel Job: Build and Test on Self-Hosted EC2 (with Tomcat installed )
   build_and_test:
     # This job will run  on a self-hosted runner with the "staging" label.
-    # Ensure your self-hosted runner for staging has the label staging assigned to it.
+    # Ensure your self-hosted runner for staging has the label `staging` assigned to it.
     runs-on: [self-hosted, staging]  # Self-hosted EC2 with Tomcat installed (Staging)
     steps:
-      #- name: Checkout code
-       # actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Run Environment Setup Script (env-setup.sh)
         run: |
@@ -30,12 +32,13 @@ jobs:
           ./env-setup.sh  # This sets up Java, Maven, etc.
 
       - name: Build with Maven
-        run: sudo mvn clean install
+        run: mvn clean install
         if: ${{ github.event_name != 'pull_request' }}  # Only run on push events, skip for PR
 
       - name: Run Unit Tests with Maven
         run: mvn test
         if: ${{ success() }}  # Run this step only if the previous build step succeeded
+
 
   # Sequential Jobs: SonarQube Analysis and Artifact Upload
   sonar_analysis:
