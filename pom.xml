@@ -10,16 +10,16 @@
     <packaging>war</packaging>
 
     <properties>
-  <sonar.organization>assignment-vik</sonar.organization>
+  <sonar.organization>rajesssssh</sonar.organization>
   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-  <sonar.projectKey>assignment-vik</sonar.projectKey>
+  <sonar.projectKey>rajesssssh_newassignment-GH</sonar.projectKey>
     </properties>
 
 <distributionManagement>
     <snapshotRepository>
-        <id>assignment-vik</id>
-        <name>assignment-vik-libs-snapshot</name>
-        <url>http://44.222.253.17:8081/artifactory/assignment-vik-libs-snapshot</url>
+        <id>hello-world-war</id>
+        <name>hello-world-war-libs-snapshot/</name>
+        <url>http://3.109.55.231:8082/artifactory/hello-world-war-libs-snapshot/</url>
     </snapshotRepository>
 </distributionManagement>
 
